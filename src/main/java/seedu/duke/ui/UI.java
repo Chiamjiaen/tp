@@ -29,6 +29,9 @@ public class UI {
     public static void unrecognizedCommandMessage() {
         System.out.println("OOPS! I cant recognize that command! ");
     }
+    public static void noCommandErrorMessage() {
+        System.out.println("OOPS! There is no command entered! ");
+    }
 
     public static void invalidFormatMessage() {
         System.out.println("OOPS! Please check to see if your command is properly formatted! ");
@@ -36,6 +39,10 @@ public class UI {
 
     public static void showLine() {
         System.out.println(LINEBREAK);
+    }
+
+    public static void emptyLine() {
+        System.out.print("\n");
     }
 
     public static void printWelcome() {
@@ -127,8 +134,8 @@ public class UI {
 
     public static void staffHeader() {
         System.out.println(
-                prettyPrint("ID", 10) + " " + prettyPrint("Name", 10) + " "
-                        + prettyPrint("Age",5) + " " + prettyPrint("Specialisation", 20));
+                prettyPrint("ID", 10) + " | " + prettyPrint("Name", 10) + " | "
+                        + prettyPrint("Age",5) + " | " + prettyPrint("Specialisation", 20));
     }
 
     public static void printStaffHelpList() {
@@ -149,5 +156,13 @@ public class UI {
         System.out.println("Invalid List command parameter\nPlease input with the following format:\n\tlist\n\tlist nurses\n\tlist doctors");
     }
 
-
+    public static void NoInputErrorMessage() {
+        System.out.println("Command is missing input parameter");
+    }
+    public static void staffMenuPrompt() {
+        System.out.print("Staff --> ");
+    }
+    public static void staffMenuHeader() {
+        System.out.print("Welcome to Staff Menu!\nType \"help\" for staff menu commands\n");
+    }
 }

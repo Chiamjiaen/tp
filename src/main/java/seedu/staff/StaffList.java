@@ -3,6 +3,7 @@ package seedu.staff;
 import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import static seedu.duke.ui.UI.prettyPrint;
 import static seedu.staff.Parser.addFunctionParser;
@@ -75,10 +76,10 @@ public class StaffList {
 
     public static void delete(String line) {
         int i = 0;
-        for (Staff staff: list){
+        for (Iterator<Staff> iterator = list.iterator(); iterator.hasNext(); ) {
+            Staff staff = iterator.next();
             if (staff.getId().equals(line.split(" ")[1])) {
-                list.remove(i);
-                numStaff--;
+                iterator.remove();
             }
             i++;
         }
@@ -87,8 +88,8 @@ public class StaffList {
 
     public static void display(Staff staff) {
         System.out.println(
-                prettyPrint(staff.getId(), 10) + " " + prettyPrint(staff.getName(), 10) + " "
-                        + prettyPrint(staff.getAge(), 5) + " " + prettyPrint(staff.getSpecialisation(), 20));
+                prettyPrint(staff.getId(), 10) + " | " + prettyPrint(staff.getName(), 10) + " | "
+                        + prettyPrint(staff.getAge(), 5) + " | " + prettyPrint(staff.getSpecialisation(), 20));
     }
 
     public static int getNumStaff() {

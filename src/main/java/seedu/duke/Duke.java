@@ -1,8 +1,5 @@
 package seedu.duke;
 
-import seedu.drugs.DrugInstance;
-import seedu.duke.exceptions.WrongListInputException;
-import seedu.duke.exceptions.WrongStaffIdException;
 import seedu.staff.Parser;
 import java.io.IOException;
 import seedu.duke.ui.UI;
@@ -15,13 +12,11 @@ public class Duke {
 
     static final String PATIENT_FILE_PATH = "data/PatientList.txt";
 
-    public Duke() {
-    }
 
     /**
      * Logic for the main loop that processes information
      */
-    public void run() throws WrongListInputException, WrongStaffIdException {
+    public static void run(){
         UI.printWelcome();
         String Username = UI.scanInput();
         UI.printUserName(Username);
@@ -74,7 +69,7 @@ public class Duke {
      *
      * @param args Runtime arguments are unused
      */
-    public static void main(String[] args) throws WrongStaffIdException, WrongListInputException {
-        new Duke().run();
+    public static void main(String[] args) {
+        Duke.run();
     }
 }
