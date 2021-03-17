@@ -1,11 +1,10 @@
-package seedu.duke;
-
+package seedu.duke.ui;
 import java.util.Scanner;
 
-public class Ui {
+public class UI {
 
     static Scanner scanner = new Scanner(System.in);
-    static String LINEBREAK = "____________________________________________________________\n";
+    static String LINEBREAK = "____________________________________________________________";
     static String LOGO = " ____        _        \n"
             + "|  _ \\ _   _| | _____ \n"
             + "| | | | | | | |/ / _ \\\n"
@@ -35,7 +34,7 @@ public class Ui {
         System.out.println("OOPS! Please check to see if your command is properly formatted! ");
     }
 
-    public void showLine() {
+    public static void showLine() {
         System.out.println(LINEBREAK);
     }
 
@@ -84,7 +83,7 @@ public class Ui {
         System.out.println("Now you have " + inputInt + " patients in the list");
     }
 
-    public void printGoodbye() {
+    public static void printGoodbye() {
         System.out.println("Goodbye! Have a nice day!");
     }
 
@@ -106,4 +105,49 @@ public class Ui {
     public void showLoadingError() {
         System.out.println("OOPS! There was an error loading the file!");
     }
+
+
+
+    public static void hiredOutput(String line) {
+        if (line.split(" ")[1].charAt(0) == 'D') {
+            System.out.println("Doctor " + line.split(" ")[2] + " hired!");
+        }
+        else if (line.split(" ")[1].charAt(0) == 'N') {
+            System.out.println("Nurse " + line.split(" ")[2] + " hired!");
+        }
+    }
+
+    public static String prettyPrint(String string, int length) {
+        return String.format("%1$-" + length + "s", string);
+    }
+
+    public static String repeat(int count, String with) {
+        return new String(new char[count]).replace("\0", with);
+    }
+
+    public static void staffHeader() {
+        System.out.println(
+                prettyPrint("ID", 10) + " " + prettyPrint("Name", 10) + " "
+                        + prettyPrint("Age",5) + " " + prettyPrint("Specialisation", 20));
+    }
+
+    public static void printStaffHelpList() {
+        System.out.println("Here is a list of Staff commands: ");
+        System.out.println("\"help\" brings up this list of commands!");
+        System.out.println("\"add [Staff ID] [Name] [Age] [Specialisation]\" adds a Staff to the staff list!");
+        System.out.println("\"list\" brings up the list of all current staff!");
+        System.out.println("\"delete [Staff ID]\" deletes the staff with the specified ID from the list!");
+        System.out.println("\"find [keyword or phrase]\" finds a keyword or phrase and shows its corresponding staff!");
+        System.out.println("\"return\" returns you to the Start Menu!");
+    }
+
+    public static void WrongStaffIDErrorMessage() {
+        System.out.println("Error in Staff ID input\nPlease input with the following format [D/N][5 digit ID number]");
+    }
+
+    public static void WrongListInputErrorMessage() {
+        System.out.println("Invalid List command parameter\nPlease input with the following format:\n\tlist\n\tlist nurses\n\tlist doctors");
+    }
+
+
 }

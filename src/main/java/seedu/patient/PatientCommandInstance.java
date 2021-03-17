@@ -1,17 +1,22 @@
-package seedu.duke;
+package seedu.patient;
+
+import seedu.duke.exceptions.DukeException;
+import seedu.duke.menuparser.MenuParser;
+import seedu.duke.storage.PatientStorage;
+import seedu.duke.ui.UI;
 
 public class PatientCommandInstance {
 
-    private Ui ui;
+    private UI ui;
     private PatientList patients;
-    private Storage storage;
+    private PatientStorage patientStorage;
     static final String PATIENT_FILE_PATH = "data/PatientList.txt";
 
     public PatientCommandInstance(String filepath) {
-        ui = new Ui();
-        storage = new Storage(PATIENT_FILE_PATH);
+        ui = new UI();
+        patientStorage = new PatientStorage(PATIENT_FILE_PATH);
         try {
-            patients = new PatientList(storage.loadPatients());
+            patients = new PatientList(patientStorage.loadPatients());
         } catch (DukeException e) {
             ui.showLoadingError();
             //creates new task list if failure to load from folder.
@@ -24,9 +29,9 @@ public class PatientCommandInstance {
         boolean isReturnToStartMenu = false;
         while (!isReturnToStartMenu) {
             try {
-                String fullCommand = ui.scanInput();
+                String fullCommand = UI.scanInput();
                 ui.showLine(); // show the divider line ("_______")
-                isReturnToStartMenu = Parser.patientParse(fullCommand);
+                isReturnToStartMenu = MenuParser.patientParse(fullCommand);
                 if (isReturnToStartMenu) {
                     ui.returningToStartMenuMessage();
                 }
@@ -36,7 +41,7 @@ public class PatientCommandInstance {
                 //Null Pointer Exception may hence occur, the catch statement is to ensure it does not exit the loop.
             }
         }
-        storage.storePatients(patients);
+        patientStorage.storePatients(patients);
     }
 
 }

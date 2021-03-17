@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.patient;
 
 public class Patient {
     protected String patientID;

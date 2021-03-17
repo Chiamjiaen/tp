@@ -1,6 +1,11 @@
-package seedu.duke;
+package seedu.duke.menuparser;
 
-public class Parser {
+
+import seedu.duke.exceptions.DukeException;
+import seedu.duke.ui.UI;
+import seedu.patient.PatientList;
+
+public class MenuParser {
 
     /**
      * Checks the number of tokens and throws an exception based on the command
@@ -39,15 +44,15 @@ public class Parser {
                 PatientList.findPatient(stringTokens[1]);
                 break;
             case "help":
-                Ui.printPatientHelpList();
+                UI.printPatientHelpList();
             case "return":
                 return true;
             default:
-                Ui.unrecognizedCommandMessage();
+                UI.unrecognizedCommandMessage();
                 break;
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            Ui.invalidFormatMessage();
+            UI.invalidFormatMessage();
         } catch (DukeException e) {
             e.getError(command);
         }

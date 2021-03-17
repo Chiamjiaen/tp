@@ -1,4 +1,6 @@
-package seedu.duke;
+package seedu.patient;
+
+import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
@@ -15,7 +17,7 @@ public class PatientList {
     public static void addPatient(String patientID, String name, int age, String gender, String illness, String drugsNeeded) {
         Patient newPatient = new Patient(patientID, name, age, gender, illness, drugsNeeded);
         patients.add(newPatient);
-        Ui.patientAddedMessage(name);
+        UI.patientAddedMessage(name);
     }
 
     public static void findPatient(String inputString) {
@@ -23,7 +25,7 @@ public class PatientList {
         for (int i = 0; i < numberOfPatients; i++) {
             String patientDetails = patients.get(i).getPatientDetails();
             if (patientDetails.contains(inputString)) {
-                Ui.printPatientList(i, patientDetails);
+                UI.printPatientList(i, patientDetails);
             }
         }
     }
@@ -31,11 +33,11 @@ public class PatientList {
     public static void listPatients() {
         int numberOfPatients = patients.size();
         if (numberOfPatients == 0) {
-            Ui.emptyPatientListMessage();
+            UI.emptyPatientListMessage();
         } else {
-            Ui.notEmptyPatientListMessage();
+            UI.notEmptyPatientListMessage();
             for (int i = 0; i < numberOfPatients; i++) {
-                Ui.printPatientList(i, patients.get(i).getPatientDetails());
+                UI.printPatientList(i, patients.get(i).getPatientDetails());
             }
         }
     }
@@ -43,11 +45,11 @@ public class PatientList {
     public static void deletePatient(int inputInt) {
         int patientIndex = inputInt - 1;
         if (inputInt <= 0 || inputInt > patients.size()) {
-            Ui.incorrectInput();
+            UI.incorrectInput();
         }
         Patient toBeDeleted = patients.get(patientIndex);
         patients.remove(patientIndex);
-        Ui.deletePatientMessage(toBeDeleted.getPatientDetails(), patients.size());
+        UI.deletePatientMessage(toBeDeleted.getPatientDetails(), patients.size());
     }
 
     public int getSize() {
