@@ -1,5 +1,6 @@
 package seedu.duke;
 
+import seedu.drugs.DrugInstance;
 import seedu.staff.Parser;
 import java.io.IOException;
 import seedu.duke.ui.UI;
