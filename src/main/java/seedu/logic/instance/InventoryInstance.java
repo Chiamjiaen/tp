@@ -62,8 +62,7 @@ public class InventoryInstance {
                     System.out.print(System.lineSeparator());
                 }
             } catch (NullPointerException e) {
-                //Command C can return as null if an error is triggered in parser
-                //Null Pointer Exception may hence occur, the catch statement is to ensure it does not exit the loop.
+                System.out.println("Sorry something went wrong somewhere:( Please follow format for command!");
             } catch (WrongNumberException e) {
                 e.getError();
             } catch (DuplicateItemException e) {

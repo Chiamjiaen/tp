@@ -2,6 +2,7 @@ package seedu.logic.command;
 
 import seedu.exceptions.DuplicateIdException;
 import seedu.exceptions.inventory.InvalidQuantityException;
+import seedu.exceptions.inventory.WrongNumberException;
 import seedu.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.exceptions.nurseschedules.InvalidiDTypeException;
 import seedu.exceptions.nurseschedules.NurseCrossValidationError;
@@ -42,7 +43,7 @@ public abstract class Command {
     public void execute(StaffList staff, StaffUI staffUI, StaffStorage staffStorage) throws IOException {
     }
 
-    public void execute(InventoryList drugs, InventoryUI ui) throws InvalidQuantityException {
+    public void execute(InventoryList drugs, InventoryUI ui) throws InvalidQuantityException, WrongNumberException {
     }
 
     public void execute(AppointmentList appointment, DoctorAppointmentUI ui) throws HealthVaultException, IOException,

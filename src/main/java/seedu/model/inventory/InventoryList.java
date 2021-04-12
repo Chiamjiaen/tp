@@ -2,13 +2,17 @@ package seedu.model.inventory;
 
 import seedu.duke.Constants;
 import seedu.exceptions.inventory.InvalidQuantityException;
+import seedu.exceptions.inventory.WrongNumberException;
 import seedu.ui.InventoryUI;
 import java.util.ArrayList;
 import static seedu.ui.UI.prettyPrint;
+import seedu.logic.errorchecker.InventoryChecker;
 
 public class InventoryList {
+    private InventoryChecker checker;
     private InventoryUI ui;
     public static ArrayList<Inventory> list = new ArrayList<>();
+    public Inventory inventory;
 
     public InventoryList() {
     }
@@ -27,12 +31,13 @@ public class InventoryList {
      *
      * @param argArr array of inputs for Inventory object.
      */
-    public void addItems(String[] argArr) {
+    public void addItems(String[] argArr) throws WrongNumberException {
         for (int i = 0; i < list.size(); i++) {
             Inventory inventoryTemp = list.get(i);
             String tempName = inventoryTemp.getItemName();
             Double tempPrice = inventoryTemp.getDoublePrice();
             if (tempName.equals(argArr[0]) && tempPrice.equals(Double.parseDouble(argArr[1]))) {
+                checker.checkStoredQuantity();
                 inventoryTemp.addQuantity(Integer.parseInt(argArr[2]));
                 return;
             }

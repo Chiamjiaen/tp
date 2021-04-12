@@ -19,11 +19,16 @@
     5. [Storage component](#45-storage-component)
 6. [Implementation](#5-implementation)
     1. [Staff](#51-staff) 
-    	1. [Staff Menu](#511-staff-menu)
-    	2. [Staff Add](#512-staff-add)
-    	3. [Staff Delete](#513-staff-delete)
-    	4. [Staff List](#514-staff-list)
-    	5. [Staff Find](#515-staff-find)
+    	- [Staff Menu](#511-staff-menu)
+    	
+    	- [Staff Add](#512-staff-add)
+    	
+    	- [Staff Delete](#513-staff-delete)
+    	
+    	- [Staff List](#514-staff-list)
+    	
+    	- [Staff Find](#515-staff-find)
+    	
     2. [Patient](#52-patient)
     	1. [Patient Menu](#521-patient-menu)
     	2. [Patient Add](#522-patient-add)

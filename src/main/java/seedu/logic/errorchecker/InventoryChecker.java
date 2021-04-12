@@ -20,8 +20,8 @@ public class InventoryChecker extends MainChecker {
     /**
      * Constructor for InventoryChecker.
      *
-     * @param inventory Inventory List of Inventory objects.
-     * @param stringTokens array of field inputs.
+     * @param inventory      Inventory List of Inventory objects.
+     * @param stringTokens   array of field inputs.
      * @param numberOfTokens number of field inputs.
      */
     public InventoryChecker(InventoryList inventory, String[] stringTokens, int numberOfTokens) {
@@ -33,8 +33,8 @@ public class InventoryChecker extends MainChecker {
     /**
      * Constructor for InventoryChecker.
      *
-     * @param inventory Array list of Inventory objects.
-     * @param stringTokens array of field inputs.
+     * @param inventory      Array list of Inventory objects.
+     * @param stringTokens   array of field inputs.
      * @param numberOfTokens number of field inputs.
      */
     public InventoryChecker(ArrayList<Inventory> inventory, String[] stringTokens, int numberOfTokens) {
@@ -62,8 +62,8 @@ public class InventoryChecker extends MainChecker {
     /**
      * Calls various checker functions to determine the validity of inputs for Add command.
      *
-     * @throws DuplicateItemException If Inventory object already exist in list.
-     * @throws WrongNumberException If any input for price and quantity is invalid.
+     * @throws DuplicateItemException    If Inventory object already exist in list.
+     * @throws WrongNumberException      If any input for price and quantity is invalid.
      * @throws IllegalCharacterException If any illegal character is present.
      */
     public void checkAdd() throws DuplicateItemException, WrongNumberException, IllegalCharacterException {
@@ -79,7 +79,7 @@ public class InventoryChecker extends MainChecker {
      * Calls various checker functions to determine the validity of inputs for Delete command.
      *
      * @throws IllegalCharacterException If any illegal character is present.
-     * @throws NonExistentItemException If item name does not exist in list.
+     * @throws NonExistentItemException  If item name does not exist in list.
      */
     public void checkDelete() throws IllegalCharacterException, NonExistentItemException, WrongNumberException {
         checkQuantity(stringTokens[2]);
@@ -116,7 +116,7 @@ public class InventoryChecker extends MainChecker {
      * Checks if name of Inventory object is taken.
      *
      * @param inputString Name of Inventory object.
-     * @param price Price of Inventory object.
+     * @param price       Price of Inventory object.
      * @throws DuplicateItemException If Inventory object already exist in list.
      */
     public static void checkDuplicate(String inputString, Double price) throws DuplicateItemException {
@@ -159,7 +159,7 @@ public class InventoryChecker extends MainChecker {
         } catch (NumberFormatException e) { //check if price is a double
             throw new WrongNumberException("price");
         }
-        if (Double.parseDouble(price) <= 0 || Double.parseDouble(price) >= 9999999) {
+        if (Double.parseDouble(price) <= 0 || Double.parseDouble(price) >= 1000000) {
             throw new WrongNumberException("price");
         }
         return false;
@@ -169,7 +169,7 @@ public class InventoryChecker extends MainChecker {
      * Checks if name exist in the Inventory list.
      *
      * @param userInput Name of Inventory object.
-     * @param items Inventory List.
+     * @param items     Inventory List.
      * @throws NonExistentItemException If name does not exist in Inventory list.
      */
     public void isNameExist(String userInput, InventoryList items) throws NonExistentItemException {
@@ -178,4 +178,13 @@ public class InventoryChecker extends MainChecker {
         }
     }
 
+    public void checkStoredQuantity() throws WrongNumberException {
+        for (Inventory inventory : InventoryList.list) {
+            int quantity = inventory.getQuantity();
+            if (quantity >= 1000000) {
+                throw new WrongNumberException("quantity");
+            }
+        }
+
+    }
 }

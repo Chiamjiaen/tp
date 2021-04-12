@@ -42,7 +42,7 @@ public class InventoryUI extends UI {
      */
     public static void inventoryListHeader() {
         System.out.println(
-                UI.prettyPrint("ItemName", 15) + " | "
+                UI.prettyPrint("Items Name", 15) + " | "
                         + UI.prettyPrint("Price", 10) + " | "
                         + UI.prettyPrint("Quantity", 5));
     }

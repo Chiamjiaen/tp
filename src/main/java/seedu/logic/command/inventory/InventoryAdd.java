@@ -1,5 +1,6 @@
 package seedu.logic.command.inventory;
 
+import seedu.exceptions.inventory.WrongNumberException;
 import seedu.logic.command.Command;
 import seedu.model.inventory.InventoryList;
 import seedu.ui.InventoryUI;
@@ -25,7 +26,7 @@ public class InventoryAdd extends Command {
      * @param items Inventory list.
      * @param ui Instance of InventoryUI used.
      */
-    public void execute(InventoryList items, InventoryUI ui) {
+    public void execute(InventoryList items, InventoryUI ui) throws WrongNumberException {
         items.addItems(argArr);
         ui.itemAddedMessage(argArr[0], Integer.parseInt(argArr[2]));
     }
